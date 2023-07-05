@@ -1,0 +1,34 @@
+.scroll-top {
+  position: fixed;
+  right: 45px;
+  bottom: 45px;
+  z-index: 99;
+}
+
+.scroll-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: #000000;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.scroll-icon:hover {
+  background-color: #7971ea;
+}
+.scroll-icon > i {
+  animation: gotop 1.2s linear infinite alternate-reverse;
+}
+@keyframes gotop {
+  0% {
+    transform: translateY((-0.5rem));
+  }
+  100% {
+    transform: translateY(0.3rem);
+  }
+}

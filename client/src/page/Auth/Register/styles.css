@@ -1,0 +1,7 @@
+.form-field {
+  margin-bottom: 1rem;
+}
+.error {
+  color: rgb(221, 48, 13);
+  font-style: italic;
+}

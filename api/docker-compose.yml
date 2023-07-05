@@ -1,0 +1,35 @@
+#not working error connecting to mongodb 
+
+#doing like this because there is no configuration for
+#mongodb URI string with username and password or production level config
+
+version: '3.8'
+services:
+    #Mongodb service
+    mongo_db:
+        container_name: mongo_db
+        image: mongo:latest
+        restart: unless-stopped
+        ports:
+            - '27017:27017'
+        volumes:
+            - mongo_data:/data/db
+    #node api service
+    node_api:
+        container_name: node_api
+        restart: unless-stopped
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - 1234:1234
+        environment:
+            PORT: 1234
+            MONGODB_URI: mongodb://mongo_db:27017
+            DB_NAME: rest-api
+        depends_on:
+            - mongo_db
+        links:
+            - mongo_db:mongo_db
+volumes:
+    mongo_data:

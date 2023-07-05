@@ -1,0 +1,18 @@
+.btn-default {
+  display: inline-block;
+  color: #fff;
+  background-color: #7971ea;
+  border-color: #7971ea;
+  border: 1px solid transparent;
+  text-decoration: none;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+  font-size: 14px !important;
+  padding: 10px 20px !important;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn-default:hover {
+  box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
+  top: -2px;
+}
