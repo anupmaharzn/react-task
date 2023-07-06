@@ -15,7 +15,7 @@ export const RegisterSchema = yup.object().shape({
     .string()
     .trim()
     .required('* This field is required')
-    .min(8, '* Invalid Password')
+    .min(8, '* Min 8 Character Long ')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
       '* Password must have at least one Uppercase, one Lowercase, one Number and one Special Case Character'
@@ -36,7 +36,7 @@ export const LoginSchema = yup.object().shape({
     .string()
     .trim()
     .required('* This field is required')
-    .min(8, '* Invalid Password')
+    .min(8, '* Min 8 Character Long')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
       '* Password must have at least one Uppercase, one Lowercase, one Number and one Special Case Character'

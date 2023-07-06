@@ -4,7 +4,6 @@ import React from 'react'
 // import * as RouteList from '../../../routes/constant'
 import HeroSection from '../../../components/landingSection/HeroSection'
 import ProductSection from '../../../components/landingSection/ProductSection'
-
 // import useSwr from 'swr'
 // import fetcher from '../../../utils/fetcher'
 

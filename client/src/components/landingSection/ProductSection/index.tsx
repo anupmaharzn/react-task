@@ -6,6 +6,7 @@ import './styles.css'
 import Card from '../../common/Card'
 import { useAppDispatch, useAppSelector } from '../../../redux/store'
 import { products as productsService } from './service'
+import Loader from '../../../components/common/ScreenLoader'
 // Owlcarousel options
 const options = {
   margin: 24,
@@ -68,7 +69,7 @@ const index: React.FC = () => {
               })}
           </OwlCarousel>
         ) : (
-          <p>Loading....</p>
+          <Loader />
         )}
       </div>
     </div>

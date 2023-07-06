@@ -11,7 +11,11 @@ const initalState: TRegisterInitialState = {
 const RegisterSlice = createSlice({
   name: 'register',
   initialState: initalState,
-  reducers: {},
+  reducers: {
+    clearError: (state) => {
+      state.error = null
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(register.pending, (state) => {
@@ -25,10 +29,12 @@ const RegisterSlice = createSlice({
       .addCase(register.rejected, (state, action: any) => {
         state.loading = false
         state.success = false
-        state.error = action.error.message || 'Something went wrong'
+        state.error = action.payload || 'Something went wrong'
         state.data = {}
       })
   },
 })
+//action creator
+export const { clearError } = RegisterSlice.actions
 
 export default RegisterSlice.reducer

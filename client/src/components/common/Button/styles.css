@@ -16,3 +16,20 @@
   box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
   top: -2px;
 }
+
+.btn-primary {
+  width: 80%;
+  border-radius: 50px;
+  color: #fff;
+  background-image: linear-gradient(to right, #7971ea, #f13e62);
+  padding: 15px;
+  cursor: pointer;
+  border: none !important;
+  margin-top: 40px;
+  transition: all 0.3 ease-in-out;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-image: linear-gradient(to right, #f13e62, #7971ea);
+}

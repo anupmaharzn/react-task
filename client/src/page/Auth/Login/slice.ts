@@ -19,7 +19,7 @@ const login = createSlice({
         state.loading = true
       })
       .addCase(loginActionCreater.fulfilled, (state, action) => {
-        state.loading = true
+        state.loading = false
         state.success = true
         state.data = action.payload
         state.error = null
@@ -27,7 +27,7 @@ const login = createSlice({
       .addCase(loginActionCreater.rejected, (state, action) => {
         state.loading = false
         state.success = false
-        state.error = action.error.message || 'Something went wrong'
+        state.error = (action.payload as string) || 'Something went wrong'
         state.data = {}
       })
   },

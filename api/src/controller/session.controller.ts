@@ -21,6 +21,14 @@ const refreshTokenCookieOptions: CookieOptions = {
     ...accessTokenCookieOptions,
     maxAge: 4.32e8,
 }
+const expireCookieOptions: CookieOptions = {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+    domain: 'localhost',
+    path: '/',
+    sameSite: 'lax',
+    secure: false,
+}
 //login
 export async function createUserSessionHandler(req: Request, res: Response) {
     //validate the user's pasword
@@ -68,8 +76,11 @@ export async function getUserSessionsHandler(req: Request, res: Response) {
 export async function deleteSessionHandler(req: Request, res: Response) {
     const sessionId = res.locals.user.session
     await updateSession({ _id: sessionId }, { valid: false })
-    return res.send({
-        accessToken: null,
-        refreshToken: null,
+    res.cookie('accessToken', null, expireCookieOptions)
+    res.cookie('refreshToken', null, expireCookieOptions)
+    res.status(200).send({
+        success: true,
+        message: 'logged out',
+        error: false,
     })
 }

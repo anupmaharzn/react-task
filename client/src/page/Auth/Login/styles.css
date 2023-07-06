@@ -1,0 +1,103 @@
+.card {
+  border-radius: 0;
+  border: none;
+}
+
+.card1 {
+  width: 50%;
+  padding: 40px 30px 10px 30px;
+}
+.card2 {
+  width: 50%;
+  background-image: linear-gradient(to right, #7971ea, #f13e62);
+}
+
+.form-control {
+  border-radius: 0.5rem;
+}
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #7971ea;
+  /* border: 2px solid #f75d34; */
+  outline: 0;
+  box-shadow: none;
+}
+.text__logo {
+  background: -webkit-linear-gradient(#ff70a5, #1200ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text__link {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+}
+.text__link:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.span__text {
+  font-size: 15px;
+  font-weight: 300;
+  margin-right: 4px;
+}
+.error {
+  color: #e96f62fa;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+}
+.icon {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+  .card1 {
+    width: 100%;
+    padding: 40px 30px 10px 30px;
+  }
+
+  .card2 {
+    width: 100%;
+  }
+
+  .right {
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card2 {
+    padding: 50px;
+  }
+
+  .right {
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+  }
+}
+@media screen and (max-width: 576px) {
+  .card1 {
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+  }
+
+  .card2 {
+    width: 100%;
+  }
+
+  .right {
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
+  }
+}
+
+.label {
+  background-color: transparent !important;
+}

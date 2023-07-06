@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { useAppSelector } from '../../../../redux/store'
+import { NavLink, useLocation } from 'react-router-dom'
+import { useAppSelector, useAppDispatch } from '../../../../redux/store'
 import './styles.css'
-
+import toast from 'react-hot-toast'
+import { logout } from '../../../../page/Home/LandingScreen/service'
 const index: React.FC = () => {
-  const { data: userData } = useAppSelector((state) => state.user)
+  const { data: userData, loading } = useAppSelector((state) => state.user)
   const [nav, setNav] = useState(false)
+  const dispatch = useAppDispatch()
   // commenting out just for dev insepction purpose
-  // const location = useLocation()
-  // scroll start from top when page changes
-  // useEffect(() => {
-  //   window.scrollTo(0, 0)
-  // }, [location])
+  const location = useLocation()
 
+  // scroll start from top when page changes
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location])
+  console.log('userdata', userData)
   // scroll handler
   const controlNavbar = () => {
     if (window.scrollY >= 80) {
@@ -27,7 +30,7 @@ const index: React.FC = () => {
       window.removeEventListener('scroll', controlNavbar)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [window.scrollY, userData])
+  }, [window.scrollY])
 
   return (
     <div style={{ backgroundColor: 'white' }}>
@@ -73,19 +76,54 @@ const index: React.FC = () => {
                   className="position-relative"
                 >
                   {' '}
-                  <i className="bi bi-bag-fill pe-1"></i>
+                  <i className="bi bi-bag-fill me-1"></i>
                   cart
                   <span className="cart-number">2</span>
                 </span>
               </NavLink>
-              {Object.keys(userData).length > 0 ? (
-                <NavLink to="/" className="nav-item nav-link">
+              {userData?.session && (
+                <NavLink to="/dashboard" className="nav-item nav-link">
+                  <span
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                    className="position-relative"
+                  >
+                    {' '}
+                    <i className="bi bi-speedometer me-2"></i>
+                    Dashboard
+                  </span>
+                </NavLink>
+              )}
+              {userData?.session && (
+                <NavLink to={''} className="nav-item nav-link username">
+                  <span
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                    className="position-relative"
+                  >
+                    {' '}
+                    <i className="bi bi-person-circle me-2"></i>
+                    {userData?.name}
+                  </span>
+                </NavLink>
+              )}
+
+              {loading ? (
+                <NavLink className="nav-item nav-link" to={''}>
+                  <span>........</span>
+                </NavLink>
+              ) : userData?.session ? (
+                <NavLink
+                  to={''}
+                  className="nav-item nav-link username"
+                  onClick={() => dispatch(logout({ toast }))}
+                >
                   <span
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse"
                   >
-                    {' '}
-                    <i className="bi bi-person-circle"></i> {userData?.username}
+                    <i className="bi bi-box-arrow-in-right me-2"></i>
+                    Logout
                   </span>
                 </NavLink>
               ) : (
@@ -95,7 +133,7 @@ const index: React.FC = () => {
                     data-bs-target="#navbarCollapse"
                   >
                     {' '}
-                    <i className="bi bi-person-fill pe-1"></i>
+                    <i className="bi bi-person-fill me-2"></i>
                     Login
                   </span>
                 </NavLink>
