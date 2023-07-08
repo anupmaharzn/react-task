@@ -69,8 +69,12 @@ const index = () => {
               <div className="d-flex align-items-center ">
                 <i className="bi bi-google-play ms-2"></i>
                 <div className="ms-3 text-start">
-                  <p style={{ fontSize: '12px' }}>Get it on</p>
-                  <p style={{ fontWeight: '400' }}>Google Play</p>
+                  <p className="button-text" style={{ fontSize: '12px' }}>
+                    Get it on
+                  </p>
+                  <p className="button-text" style={{ fontWeight: '400' }}>
+                    Google Play
+                  </p>
                 </div>
               </div>
             </button>
@@ -78,8 +82,12 @@ const index = () => {
               <div className="d-flex align-items-center ">
                 <i className="bi bi-apple ms-2 "></i>
                 <div className="ms-3 text-start">
-                  <p style={{ fontSize: '12px' }}>Download on the</p>
-                  <p style={{ fontWeight: '400' }}>App Store</p>
+                  <p className="button-text" style={{ fontSize: '12px' }}>
+                    Download on the
+                  </p>
+                  <p className="button-text" style={{ fontWeight: '400' }}>
+                    App Store
+                  </p>
                 </div>
               </div>
             </button>

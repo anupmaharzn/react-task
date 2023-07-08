@@ -23,7 +23,7 @@
 }
 .footer-link {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
   padding: 0;
   text-align: left;
   color: #000 !important;
@@ -39,7 +39,7 @@
 }
 .footer-text {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
   padding: 0;
   text-align: left;
   color: #000000 !important;
@@ -92,4 +92,8 @@
 }
 .btn-outline-light:focus {
   box-shadow: none;
+}
+
+.button-text {
+  margin: 0;
 }

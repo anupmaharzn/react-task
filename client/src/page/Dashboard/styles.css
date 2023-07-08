@@ -1,0 +1,7 @@
+.site-dash-layout {
+  margin-left: 200px;
+  position: absolute;
+  width: calc(100% - 200px);
+  top: 92px;
+  right: 0;
+}

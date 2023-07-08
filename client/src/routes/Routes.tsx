@@ -11,9 +11,10 @@ import ScrollButton from '../components/common/ScrollButton'
 import * as RouteList from './constant'
 import { ProtectedRoute, Anonymous } from './ProtectedRoute'
 import PageNotFound from '../components/PageNotFound'
-const Dashboard = React.lazy(() => import('../components/Dashboard'))
+const Dashboard = React.lazy(() => import('../page/Dashboard'))
 import Loader from '../components/common/ScreenLoader'
-
+import Products from '../page/Dashboard/Contents/Products'
+import AddProduct from '../page/Dashboard/Contents/AddProduct'
 type TRouterProps = {
   basename?: string
   children: React.ReactNode
@@ -48,17 +49,35 @@ const Routess = () => {
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route path={RouteList.home} element={<LandingScreen />} />
-          <Route element={<ProtectedRoute isAdmin={true} />}>
-            <Route
-              path={RouteList.dashboard}
-              element={
+
+          <Route
+            path={RouteList.dashboard}
+            element={
+              <ProtectedRoute>
                 <Suspense fallback={<Loader />}>
                   <Dashboard />
                 </Suspense>
-              }
-            />
-          </Route>
-          <Route element={<Anonymous isAdmin={false} />}>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={RouteList.products}
+            element={
+              <ProtectedRoute>
+                <Products />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={RouteList.addproduct}
+            element={
+              <ProtectedRoute>
+                <AddProduct />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route element={<Anonymous />}>
             <Route path={RouteList.login} element={<Login />} />
             <Route path={RouteList.register} element={<Register />} />
           </Route>
