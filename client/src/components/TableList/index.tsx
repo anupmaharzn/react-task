@@ -1,56 +1,49 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { EditFilled, DeleteFilled } from '@ant-design/icons'
-import { Table, Popconfirm } from 'antd'
+import { Table, Popconfirm, Spin } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import React from 'react'
-import Img from '../../assets/images/hero.jpg'
+import { environmentConfig } from '../../config/enviroment'
 import './styles.css'
-
-interface DataType {
-  key: string
-  name: string
-  price: number
+import { useAppSelector, useAppDispatch } from '../../redux/store'
+import {
+  getProduct,
+  deleteProduct,
+} from '../../page/Dashboard/Contents/Products/service'
+import toast from 'react-hot-toast'
+type TProductData = {
+  _id: string
+  title: string
   description: string
-  img: string
+  image: string
+  productId: string
+  price: number
+  createdAt: Date
+  updatedAt: Date
+  __v: number
+  user: string
 }
-
-const data: DataType[] = [
-  {
-    key: '1',
-    name: 'John Brown',
-    price: 32,
-    description: 'New York No. 1 Lake Park',
-    img: Img,
-  },
-  {
-    key: '2',
-    name: 'Joe Black',
-    price: 42,
-    description: 'London No. 1 Lake Park',
-    img: Img,
-  },
-  {
-    key: '3',
-    name: 'Jim Green',
-    price: 32,
-    description: 'Sydney No. 1 Lake Park',
-    img: Img,
-  },
-  {
-    key: '4',
-    name: 'Jim Red',
-    price: 32,
-    description: 'London No. 2 Lake Park',
-    img: Img,
-  },
-]
-
+const baseUrl = environmentConfig.baseUrlDev
 const index: React.FC = () => {
-  const handleDelete = (key: React.Key) => {
+  const {
+    loading,
+    data: { data: productData },
+  } = useAppSelector((state) => state.products)
+  const dispatch = useAppDispatch()
+
+  async function handleEdit(key: string) {
     console.log(key)
   }
 
-  const columns: ColumnsType<DataType> = [
+  async function handleDelete(productId: string) {
+    dispatch(deleteProduct({ productId, toast }))
+  }
+
+  async function handleProductDetail(productId: string) {
+    dispatch(getProduct({ productId }))
+  }
+
+  const columns: ColumnsType<TProductData> = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -58,8 +51,11 @@ const index: React.FC = () => {
       width: '30%',
       render: (_, record) => (
         <>
-          {record.img && (
-            <>
+          {record.image && (
+            <div
+              className="product-name"
+              onClick={() => handleProductDetail(record.productId)}
+            >
               <img
                 style={{
                   width: '50px',
@@ -68,12 +64,12 @@ const index: React.FC = () => {
                   marginRight: '16px',
                   objectFit: 'cover',
                 }}
-                src={record.img}
-                alt={record.img}
+                src={`${baseUrl}/${record.image}`}
+                alt="productimg"
               ></img>
-            </>
-          )}{' '}
-          {record.name}
+              {record.title}
+            </div>
+          )}
         </>
       ),
     },
@@ -84,21 +80,24 @@ const index: React.FC = () => {
     },
     {
       title: 'Price',
-      dataIndex: 'price',
+      // dataIndex: 'price',
       key: 'price',
       width: '20%',
       sorter: (a, b) => a.description.length - b.description.length,
       sortDirections: ['descend', 'ascend'],
+      render: (_, record: { price: React.Key }) => (
+        <span>Rs. {record.price}</span>
+      ),
     },
     {
       title: 'Action',
       dataIndex: 'operation',
-      render: (_, record: { key: React.Key }) =>
-        data.length >= 1 ? (
+      render: (_, record: { productId: string }) =>
+        productData.length >= 1 ? (
           <>
             <Popconfirm
               title="Sure to edit?"
-              onConfirm={() => handleDelete(record.key)}
+              onConfirm={() => handleEdit(record.productId)}
             >
               <a
                 style={{
@@ -111,7 +110,7 @@ const index: React.FC = () => {
             </Popconfirm>
             <Popconfirm
               title="Sure to delete?"
-              onConfirm={() => handleDelete(record.key)}
+              onConfirm={() => handleDelete(record.productId)}
             >
               <a
                 style={{
@@ -131,8 +130,16 @@ const index: React.FC = () => {
       <Table
         className="table"
         columns={columns}
-        dataSource={data}
-        pagination={{ pageSize: 7 }}
+        dataSource={productData}
+        pagination={{ pageSize: 5 }}
+        loading={{
+          indicator: (
+            <div>
+              <Spin />
+            </div>
+          ),
+          spinning: loading,
+        }}
       />
     </>
   )

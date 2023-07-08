@@ -1,3 +1,8 @@
-h1 {
-  color: rgb(96, 77, 142);
+main {
+  flex-grow: 1;
+}
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,0 +1,99 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.photo {
+  padding: 30px;
+  width: 45%;
+  height: 375px;
+  text-align: center;
+  float: left;
+}
+.photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.description {
+  padding: 30px;
+  float: left;
+  width: 55%;
+  border-left: 1.5px solid #cfcfcf;
+}
+.price {
+  font-weight: 300;
+  padding-top: 20px;
+  font-size: 30px;
+  font-weight: 300;
+  color: #502a57;
+}
+
+.title {
+  color: #515151;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: start;
+}
+
+.productid {
+  font-size: 13px;
+  font-weight: 400;
+  color: midnightblue;
+  font-style: italic;
+  padding-top: 10px;
+}
+
+.desc {
+  font-size: 17px;
+  font-weight: 300;
+  color: #4b5859;
+}
+
+.card-button {
+  outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-transform: uppercase;
+  width: 125px;
+  font-family: inherit;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  background: black;
+  font-size: 13px;
+}
+.card-button:hover {
+  border: 1px solid #aedaa6;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+.btn-wrap {
+  margin-top: 3rem;
+}
+
+@media screen and (max-width: 767px) {
+  .card-container {
+    flex-direction: column;
+  }
+  .photo {
+    width: 100%;
+    height: 300px;
+  }
+  .description {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    border-top: 1.5px solid #cfcfcf;
+    border-left: none;
+  }
+}

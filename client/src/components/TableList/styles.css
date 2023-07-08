@@ -13,3 +13,10 @@
 .ant-layout-content {
   border-radius: 10px;
 }
+.product-name {
+  cursor: pointer;
+  transition: all 0.3 ease-in-out;
+}
+.product-name:hover {
+  text-decoration: underline;
+}

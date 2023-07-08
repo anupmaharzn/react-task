@@ -47,14 +47,15 @@ export async function updateProductHandler(
             data: null,
         })
     }
-    if (String(product.user) !== userId) {
-        return res.status(403).send({
-            message: 'Forbidden',
-            error: true,
-            status: 403,
-            data: null,
-        })
-    }
+    // since we are assuming  as admin->not needed comment it out
+    // if (String(product.user) !== userId) {
+    //     return res.status(403).send({
+    //         message: 'Forbidden',
+    //         error: true,
+    //         status: 403,
+    //         data: null,
+    //     })
+    // }
     const updatedProduct = await findAndUpdateProduct({ productId }, update, {
         new: true,
     })
@@ -122,14 +123,15 @@ export async function deleteProductHandler(
             data: null,
         })
     }
-    if (String(product.user) !== userId) {
-        return res.status(403).send({
-            message: 'Forbidden',
-            error: true,
-            status: 403,
-            data: null,
-        })
-    }
+    // since we are assuming as admin->not needed comment it out
+    // if (String(product.user) !== userId) {
+    //     return res.status(403).send({
+    //         message: 'Forbidden',
+    //         error: true,
+    //         status: 403,
+    //         data: null,
+    //     })
+    // }
     await deleteProduct({ productId })
     return res.status(200).send({
         message: 'Delete Sucessfully',

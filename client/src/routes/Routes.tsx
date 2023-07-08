@@ -15,6 +15,7 @@ const Dashboard = React.lazy(() => import('../page/Dashboard'))
 import Loader from '../components/common/ScreenLoader'
 import Products from '../page/Dashboard/Contents/Products'
 import AddProduct from '../page/Dashboard/Contents/AddProduct'
+import ProductDetail from '../page/Dashboard/Contents/ProductDetail'
 type TRouterProps = {
   basename?: string
   children: React.ReactNode
@@ -47,42 +48,50 @@ const Routess = () => {
     <CustomRouter history={history}>
       <Navbar />
       <AnimatePresence>
-        <Routes location={location} key={location.pathname}>
-          <Route path={RouteList.home} element={<LandingScreen />} />
-
-          <Route
-            path={RouteList.dashboard}
-            element={
-              <ProtectedRoute>
-                <Suspense fallback={<Loader />}>
-                  <Dashboard />
-                </Suspense>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={RouteList.products}
-            element={
-              <ProtectedRoute>
-                <Products />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={RouteList.addproduct}
-            element={
-              <ProtectedRoute>
-                <AddProduct />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route element={<Anonymous />}>
-            <Route path={RouteList.login} element={<Login />} />
-            <Route path={RouteList.register} element={<Register />} />
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        <main>
+          <Routes location={location} key={location.pathname}>
+            <Route path={RouteList.home} element={<LandingScreen />} />
+            <Route
+              path={RouteList.dashboard}
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={<Loader />}>
+                    <Dashboard />
+                  </Suspense>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={RouteList.products}
+              element={
+                <ProtectedRoute>
+                  <Products />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={RouteList.addproduct}
+              element={
+                <ProtectedRoute>
+                  <AddProduct />
+                </ProtectedRoute>
+              }
+            />{' '}
+            <Route
+              path={RouteList.productDetail}
+              element={
+                <ProtectedRoute>
+                  <ProductDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route element={<Anonymous />}>
+              <Route path={RouteList.login} element={<Login />} />
+              <Route path={RouteList.register} element={<Register />} />
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </main>
       </AnimatePresence>
       <Footer />
       <ScrollButton />

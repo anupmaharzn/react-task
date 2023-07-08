@@ -39,7 +39,7 @@ const options = {
 const index: React.FC = () => {
   const dispatch = useAppDispatch()
   const { loading, data: product } = useAppSelector((state) => state.products)
-  console.log('selectordata', product)
+
   useEffect(() => {
     dispatch(productsService())
   }, [])
