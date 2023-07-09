@@ -3,6 +3,7 @@ import './styles.css'
 import { Breadcrumb, Layout, theme } from 'antd'
 import { useAppSelector } from '../../../../redux/store'
 import DetailCard from '../../../../components/common/DetailCard'
+import Loader from '../../../../components/common/ScreenLoader'
 const { Content } = Layout
 const index: React.FC = () => {
   const {
@@ -13,7 +14,6 @@ const index: React.FC = () => {
     loading,
     data: { data: product },
   } = useAppSelector((state) => state.getordeleteProduct)
-  console.log('productDetail', product)
   return (
     <Layout className="site-layout site-dash-layout">
       <Layout style={{ padding: '0 24px 24px' }}>
@@ -29,14 +29,19 @@ const index: React.FC = () => {
             overflow: 'initial',
           }}
         >
-          {!loading && product && (
-            <DetailCard
-              description={product?.description}
-              image={product?.image}
-              price={product?.price}
-              productId={product?.productId}
-              title={product?.title}
-            />
+          {loading ? (
+            <Loader />
+          ) : (
+            !loading &&
+            product && (
+              <DetailCard
+                description={product?.description}
+                image={product?.image}
+                price={product?.price}
+                productId={product?.productId}
+                title={product?.title}
+              />
+            )
           )}
         </Content>
       </Layout>

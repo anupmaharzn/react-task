@@ -1,14 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { axiosInstance as axios } from '../../../../utils/apiUtils'
 import { products } from '../../../../components/landingSection/ProductSection/service'
-import { history } from '../../../../routes/Routes'
+
 export const getProduct = createAsyncThunk(
   'getProduct',
   async ({ productId }: { productId: string }, thunkAPI?: any) => {
     try {
       const response = await axios.get(`/api/products/${productId}`)
       const responseData = await response.data
-      history.push(`/form/${responseData?.data?.productId}`)
       return responseData
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error?.data?.message)

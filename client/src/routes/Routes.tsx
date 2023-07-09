@@ -16,6 +16,7 @@ import Loader from '../components/common/ScreenLoader'
 import Products from '../page/Dashboard/Contents/Products'
 import AddProduct from '../page/Dashboard/Contents/AddProduct'
 import ProductDetail from '../page/Dashboard/Contents/ProductDetail'
+import EditProduct from '../page/Dashboard/Contents/EditProduct'
 type TRouterProps = {
   basename?: string
   children: React.ReactNode
@@ -82,6 +83,14 @@ const Routess = () => {
               element={
                 <ProtectedRoute>
                   <ProductDetail />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={RouteList.editProduct}
+              element={
+                <ProtectedRoute>
+                  <EditProduct />
                 </ProtectedRoute>
               }
             />

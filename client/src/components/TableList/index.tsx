@@ -6,6 +6,7 @@ import React from 'react'
 import { environmentConfig } from '../../config/enviroment'
 import './styles.css'
 import { useAppSelector, useAppDispatch } from '../../redux/store'
+import { useNavigate } from 'react-router-dom'
 import {
   getProduct,
   deleteProduct,
@@ -30,9 +31,12 @@ const index: React.FC = () => {
     data: { data: productData },
   } = useAppSelector((state) => state.products)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
-  async function handleEdit(key: string) {
-    console.log(key)
+  async function handleEdit(productId: string) {
+    dispatch(getProduct({ productId })).then(() => {
+      navigate(`/form/edit/${productId}`, { replace: true })
+    })
   }
 
   async function handleDelete(productId: string) {
@@ -40,7 +44,9 @@ const index: React.FC = () => {
   }
 
   async function handleProductDetail(productId: string) {
-    dispatch(getProduct({ productId }))
+    dispatch(getProduct({ productId })).then(() => {
+      navigate(`/form/${productId}`, { replace: true })
+    })
   }
 
   const columns: ColumnsType<TProductData> = [

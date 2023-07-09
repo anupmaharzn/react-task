@@ -33,3 +33,20 @@
   color: #fff;
   background-image: linear-gradient(to right, #f13e62, #7971ea);
 }
+
+.btn-secondary {
+  width: 50%;
+  border-radius: 50px;
+  color: #fff;
+  background-image: linear-gradient(to right, #7971ea, #f13e62);
+  padding: 15px;
+  cursor: pointer;
+  border: none !important;
+  margin-top: 40px;
+  transition: all 0.3 ease-in-out;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-image: linear-gradient(to right, #f13e62, #7971ea);
+}

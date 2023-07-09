@@ -9,9 +9,9 @@ export const productSchema = yup.object().shape({
     .string()
     .required('* This field is required')
     .min(10, '*Min 10 character'),
-  price: yup
-    .number()
-    .required('* This field is required')
-    .moreThan(0, 'price should not be zero'),
-  image: yup.string().required('* This field is required'),
+  price: yup.number().required('* This field is required'),
+  image: yup.mixed().test('required', 'You need to provide a file', (file) => {
+    if (file) return true
+    return false
+  }),
 })
