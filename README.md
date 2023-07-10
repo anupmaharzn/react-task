@@ -1,13 +1,16 @@
-### React Challege : DOMAIN-ECommerce product management
+### React Challege:
 
-### Description: Product management application where admin user can manage their E-commerce product.
+- DOMAIN-ECommerce product management
+
+### Description:
+
+- Product management application where admin user can manage their E-commerce product.
 
 ### Tech stack used in applicaton
 
 ## Database
 
 - MongoDB with Mongoose
-- Docker
 
 ## Backend
 
@@ -17,6 +20,7 @@
 - jest and supertest for testing apis
 - multer for local file storage
 - bcrypt for password-hashing
+- Docker
 
 ## Frontend
 
@@ -25,10 +29,13 @@
 - Yup and React Hook Form for Form-validation
 - Bootstrap, antd and css for layout and styling
 - Framer motion for transition animation
+- Docker
 
-### Setup process
+### Setup Process
 
-# For Database,Mongodb server must be up on running locally
+# For Database
+
+- Mongodb server must be up on running locally
 
 # For Backend
 
