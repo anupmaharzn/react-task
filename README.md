@@ -66,4 +66,4 @@
 
 ## Start Development server
 
-`npm run dev`
+`npm start`
