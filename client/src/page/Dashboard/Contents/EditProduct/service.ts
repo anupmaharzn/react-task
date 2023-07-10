@@ -19,7 +19,6 @@ export const editProduct = createAsyncThunk(
         },
       })
       const responseData = await response.data
-      console.log('editproduct', responseData)
       toast.success(responseData?.message)
       await thunkAPI.dispatch(products())
       return responseData

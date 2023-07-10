@@ -1,18 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { axiosInstance as axios } from '../../../../utils/apiUtils'
 import { TProduct } from '../types'
-import { history } from '../../../../routes/Routes'
+import { products } from '../../../../components/landingSection/ProductSection/service'
 export const addProduct = createAsyncThunk(
   'addProduct',
-  async ({ data, toast }: { data: TProduct; toast: any }, thunkAPI?: any) => {
+  async (
+    { addData, toast }: { addData: TProduct; toast: any },
+    thunkAPI?: any
+  ) => {
     try {
-      const response = await axios.post('/api/products', data, {
+      const response = await axios.post('/api/products', addData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
       const responseData = await response.data
-      console.log('response', responseData)
+      await thunkAPI.dispatch(products())
       toast.success(responseData?.message)
       return responseData
     } catch (error: any) {

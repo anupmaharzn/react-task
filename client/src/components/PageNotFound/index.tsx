@@ -14,7 +14,7 @@ const index: React.FC = () => {
         <div className="dimples"></div>
         <div className="mouth"></div>
       </div>
-      <h1 className="title">Oops! Page Not Found!</h1>
+      <h1 className="title-h">Oops! Page Not Found!</h1>
       <Link className="btnpage" to={'/'}>
         Return To Home
       </Link>

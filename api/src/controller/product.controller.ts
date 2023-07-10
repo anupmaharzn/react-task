@@ -24,7 +24,7 @@ export async function createProductHandler(
     return res.status(201).send({
         message: 'Product created',
         error: false,
-        status: 200,
+        status: 201,
         data: product,
     })
 }

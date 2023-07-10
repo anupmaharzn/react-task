@@ -1,11 +1,18 @@
 import React from 'react'
 import './styles.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+
 // get-Current-Year
 const getYear = new Date().getFullYear()
 const index = () => {
+  const location = useLocation()
+  const path = location.pathname === '/form'
   return (
-    <footer className="container-fluid footer text-light pt-5">
+    <footer
+      className={
+        path ? 'footer-hide' : 'container-fluid footer text-light pt-5'
+      }
+    >
       <div className="container py-5">
         <div className="row g-5">
           <div className="col-lg-3 col-md-6">

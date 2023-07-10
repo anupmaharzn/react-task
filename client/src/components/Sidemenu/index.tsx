@@ -28,8 +28,6 @@ const App: React.FC = () => {
     setSelectedKeys(pathName)
   }, [location.pathname])
   const navigate = useNavigate()
-  console.log(location.pathname)
-  console.log(RouteList.dashboard)
   // const componentSwitch = (path: any) => {
   //   switch (path) {
   //     case path === RouteList.dashboard:

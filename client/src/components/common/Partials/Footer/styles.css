@@ -1,6 +1,9 @@
 .footer {
   background-color: white !important;
 }
+.footer-hide{
+  display:none
+}
 .footer-title {
   position: relative;
   color: #000000;

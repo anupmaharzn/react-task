@@ -8,14 +8,11 @@ const index: React.FC = () => {
   const { data: userData, loading } = useAppSelector((state) => state.user)
   const [nav, setNav] = useState(false)
   const dispatch = useAppDispatch()
-  // commenting out just for dev insepction purpose
   const location = useLocation()
-
   // scroll start from top when page changes
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location])
-  console.log('userdata', userData)
   // scroll handler
   const controlNavbar = () => {
     if (window.scrollY >= 80) {

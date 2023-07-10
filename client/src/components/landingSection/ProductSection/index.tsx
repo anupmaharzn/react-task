@@ -56,7 +56,6 @@ const index: React.FC = () => {
           <OwlCarousel className="product-carousel" {...options}>
             {product?.data?.length > 0 &&
               product?.data?.map((item: any) => {
-                console.log('inside mapper')
                 return (
                   <Card
                     key={item.id}

@@ -6,9 +6,7 @@ export const products = createAsyncThunk(
   async (_: void, thunkAPI?: any) => {
     try {
       const response = await axios.get('/api/products')
-
       const responseData = await response.data
-      console.log('response', responseData)
       return responseData
     } catch (error) {
       return thunkAPI.rejectWithValue('Request Failed')

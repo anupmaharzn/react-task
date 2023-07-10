@@ -28,7 +28,7 @@ const index: React.FC = () => {
     handleSubmit,
     register,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
   } = useForm<TProduct>({
     defaultValues: {
       title: product?.title,
@@ -45,7 +45,7 @@ const index: React.FC = () => {
     dispatch(editProduct({ productId, editData, toast }))
   }
   useEffect(() => {
-    if (data?.status == 200) {
+    if (data?.status === 200) {
       reset({
         title: '',
         description: '',
@@ -53,7 +53,7 @@ const index: React.FC = () => {
         image: '',
       })
     }
-  }, [data?.status, reset])
+  }, [data?.status, reset, isSubmitSuccessful])
 
   return (
     <Layout className="site-layout site-dash-layout">

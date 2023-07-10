@@ -1,0 +1,24 @@
+.action-bar {
+  top: 0;
+  right: 0;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.action-bar:hover {
+  opacity: 1;
+}
+
+.bar-btn {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  background-color: #0f3ea1;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 3px 10px;
+  margin: auto;
+  font-size: 11px;
+}

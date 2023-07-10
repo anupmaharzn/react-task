@@ -6,6 +6,7 @@ import products from '../components/landingSection/ProductSection/slice'
 import addProduct from '../page/Dashboard/Contents/AddProduct/slice'
 import editProduct from '../page/Dashboard/Contents/EditProduct/slice'
 import getordeleteProduct from '../page/Dashboard/Contents/Products/slice'
+import cellReducer from './state/reducer'
 const rootReducer = combineReducers({
   register: register,
   login: login,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   addProduct: addProduct,
   editProduct: editProduct,
   getordeleteProduct: getordeleteProduct,
+  cells: cellReducer,
 })
 
 export default rootReducer

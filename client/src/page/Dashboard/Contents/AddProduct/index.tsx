@@ -1,16 +1,28 @@
 import React from 'react'
 import { Breadcrumb, Layout, theme } from 'antd'
 const { Content } = Layout
+import Form from '../../../../components/Form'
+import { useAppSelector } from '../../../../redux/store'
+import FormListItem from '../../../../components/FormListItem'
+import AddForm from '../../../../components/AddForm'
 const index: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken()
+
+  // const cells = useAppSelector((state) => {
+  //   return state.cells?.order?.map((id) => {
+  //     return state.cells?.data[id]
+  //   })
+  // })
+  const { order } = useAppSelector((state) => state.cells)
+
   return (
     <Layout className="site-layout site-dash-layout">
       <Layout style={{ padding: '0 24px 24px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+          <Breadcrumb.Item>New Product</Breadcrumb.Item>
         </Breadcrumb>
         <Content
           style={{
@@ -20,7 +32,18 @@ const index: React.FC = () => {
             overflow: 'initial',
           }}
         >
-          Add Product
+          <div className="form-list">
+            <AddForm forceVisable={order?.length === 0} prevCellId={null} />
+          </div>
+          {order &&
+            order.map((id: any) => {
+              return (
+                <div key={id}>
+                  <FormListItem id={id} />
+                  <AddForm prevCellId={id} />
+                </div>
+              )
+            })}
         </Content>
       </Layout>
     </Layout>

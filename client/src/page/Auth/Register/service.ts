@@ -9,7 +9,6 @@ export const register = createAsyncThunk(
   async ({ data, toast }: { data: TRegister; toast: any }, thunkAPI) => {
     try {
       const response = await axios.post('/api/users', data)
-      console.log('response', response)
       const responseData = await response.data
       toast.success(responseData?.message)
       history.push('/auth/login')
